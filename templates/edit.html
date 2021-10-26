@@ -1,0 +1,71 @@
+{% extends "base.html"%} {% block content %} {% load static %}
+<section class="content">
+  <div class="main-header">
+    <img src="{% static 'img/twitter.png' %}"class=“logo” style= "    width: 60px;"/>
+    <h1>EDIT</h1>
+  </div>
+  <section class="post_form">
+    <form
+      action="/edit/{{post.id}}/"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <input
+        class="name" 
+        type="text"
+        name="name"
+        placeholder="Name"
+        value="{{post.name}}"
+        required
+      />
+      <textarea
+        class="texxtarea"
+        name="body"
+        placeholder="{{post.body}}"
+        required
+      ></textarea>
+      <label for="{{post.name}}"></label>
+      {% if post.image.url %}
+      <img class="post-border" src="{{ post.image.url }}" style="width: 350px; height: 400px; border-radius:25px"
+       />
+      {% endif %}
+      <div class="flex" >
+        <input class="inputimage" name="image" type="file" style="border:0;"/>
+        <div class="tweet" style="display:flex; margin-left:12px;">
+          <a class="update-button" href="{%  url 'index' %}" style="text-decoration: none; color:black; width: 69px;
+          height: 32px;
+          background: dodgerblue;
+          border: 0;
+          border-radius: 10px;
+          text-align: center;
+    padding-top: 10px;">Cancel</a>
+          <input class="update-button" type="submit" value="Update" style="width: 69px;
+          height: 42px;
+          background: dodgerblue;
+          border: 0;
+          border-radius: 10px;
+          margin-left:20px"/>
+        </div>
+      </div>
+    </form>
+  </section>
+</section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
