@@ -18,7 +18,7 @@ def index(request):
             return HttpResponseRedirect('/')
         else:
             # No, Shows Error   
-            return HttpResponseRedirect(form.erros.as_json())
+            return HttpResponseRedirect(form.errors.as_json())
     # Get all posts, limit = 20
     posts = Post.objects.all().order_by('-created_at')[:20]
     #show
@@ -42,7 +42,7 @@ def edit(request, post_id):
             return HttpResponseRedirect('/')
         else:
             # No, Show Error
-            return HttpResponseRedirect(form.erros.as_json())
+            return HttpResponseRedirect(form.errors.as_json())
     return render(request, 'edit.html', {'post': post})
 def LikeView(request, post_id):
     post = Post.objects.get(id=post_id)
