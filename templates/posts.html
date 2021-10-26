@@ -41,7 +41,7 @@
 
                     <form id=“likes-form” action="{% url 'like_post' post.pk %}" method=‘POST’>
                         {% csrf_token %}
-                    <button class=“like-button” type=“submit”, name=“post_id”, value=“{{ post.id }}” href=“post_id”>
+                    <button class=“like-button” type=“submit” name="post_id"  value="{{ post.id }}" href="post_id">
                       &#10084;
                     </button>
                     {{post.likes}}
